@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "react-query";
 import * as apiClient from "../api-client";
-
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 
@@ -21,13 +20,12 @@ const SignIn = () => {
 
   const mutation = useMutation(apiClient.signIn, {
     onSuccess: async () => {
-      toast.success("Sign in successful"); // Show success toast
+      toast.success("Sign in successful");
       await queryClient.invalidateQueries("validateToken");
-      // Redirect to home page after successful login
       window.location.href = "/";
     },
     onError: (error: Error) => {
-      toast.error(error.message); // Show error toast
+      toast.error(error.message);
     },
   });
 
@@ -36,9 +34,11 @@ const SignIn = () => {
   });
 
   return (
-    <form className="flex flex-col gap-5 max-w-md mx-auto" onSubmit={onSubmit}>
-      <h2 className="text-3xl font-bold">Sign In</h2>
-
+    <form
+      className="flex flex-col gap-5 max-w-md mx-auto bg-white p-6 rounded-lg shadow-md"
+      onSubmit={onSubmit}
+    >
+      <h2 className="text-3xl font-bold text-center">Sign In</h2>
       <div className="form-group">
         <input
           type="email"
@@ -77,7 +77,7 @@ const SignIn = () => {
         {mutation.isLoading ? "Signing in..." : "Sign In"}
       </button>
 
-      <p className="mt-4 text-gray-600">
+      <p className="mt-4 text-gray-600 text-center">
         Don't have an account?{" "}
         <Link to="/register" className="text-blue-500 hover:underline">
           Create an account
