@@ -18,18 +18,22 @@ const queryClient = new QueryClient({
 
 const rootElement = document.getElementById("root");
 
-// Use createRoot instead of ReactDOM.render
-const root = ReactDOM.createRoot(rootElement);
+if (rootElement) {
+  // Use createRoot instead of ReactDOM.render
+  const root = ReactDOM.createRoot(rootElement);
 
-root.render(
-  <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <AppContextProvider>
-        <SearchContextProvider>
-          <App />
-        </SearchContextProvider>
-      </AppContextProvider>
-      <ToastContainer /> {/* Add ToastContainer here */}
-    </QueryClientProvider>
-  </React.StrictMode>
-);
+  root.render(
+    <React.StrictMode>
+      <QueryClientProvider client={queryClient}>
+        <AppContextProvider>
+          <SearchContextProvider>
+            <App />
+          </SearchContextProvider>
+        </AppContextProvider>
+        <ToastContainer /> {/* Add ToastContainer here */}
+      </QueryClientProvider>
+    </React.StrictMode>
+  );
+} else {
+  console.error("Root element 'root' not found in the document.");
+}
