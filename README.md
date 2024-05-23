@@ -7,7 +7,6 @@ Before you begin, ensure you have Node.js installed on your system.
 Cloning the Repository
 Start by cloning the repository to your local machine:
 
-git clone https://github.com/chrisblakely01/mern-booking-app.git
 cd mern-booking-app
 Backend Configuration
 Environment Files: Navigate to the backend folder and create two files: .env and .env.e2e. Add the following contents to both files:
